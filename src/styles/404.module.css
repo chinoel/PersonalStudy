@@ -1,0 +1,45 @@
+/* styles/404.module.css */
+
+.container {
+  width: 1024px;
+  height: 603px;
+  position: relative;
+  background: white;
+}
+
+.errorCode {
+  left: 395px;
+  top: 153px;
+  position: absolute;
+  background: linear-gradient(161deg, white 0%, #378A50 62%, #1D4812 100%);
+  color: transparent;
+  font-size: 250px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+.pageNotFound {
+  left: 87px;
+  top: 217px;
+  position: absolute;
+  color: #1f2c13;
+  font-size: 40px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 800;
+  word-wrap: break-word;
+}
+
+.errorMessage {
+  left: 87px;
+  top: 279px;
+  position: absolute;
+  color: #404040;
+  font-size: 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}

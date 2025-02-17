@@ -1,0 +1,191 @@
+.LoginPc {
+    width: 1024px;
+    height: 1024px;
+    position: relative;
+    background: white;
+}
+
+.PcLogin {
+    width: 543px;
+    height: 684px;
+    left: 240px;
+    top: 186px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.LoginBtn {
+    width: 364px;
+    height: 56px;
+    left: 90px;
+    top: 544px;
+    position: absolute;
+    background: white;
+    border: 1px #767676 solid;
+}
+
+.LoginBtnText {
+    left: 154px;
+    top: 19px;
+    position: absolute;
+    text-align: center;
+    color: #767676;
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Ellipse2,
+.Ellipse3,
+.Ellipse4 {
+    width: 48px;
+    height: 49px;
+    position: absolute;
+    border-radius: 9999px;
+    border: 1px #DBDBDB solid;
+}
+
+.Ellipse2 {
+    left: 180px;
+    top: 455px;
+}
+
+.Ellipse3 {
+    left: 248px;
+    top: 455px;
+}
+
+.Ellipse4 {
+    left: 316px;
+    top: 455px;
+}
+
+.Sns {
+    left: 195px;
+    top: 417px;
+    position: absolute;
+    color: #767676;
+    font-size: 15px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.LoginBtnGreen {
+    width: 364px;
+    height: 56px;
+    left: 90px;
+    top: 321px;
+    position: absolute;
+    background: #BFFF00;
+}
+
+.Option {
+    width: 364px;
+    height: 22px;
+    left: 90px;
+    top: 259px;
+    position: absolute;
+}
+
+.OptionText {
+    position: absolute;
+    color: #767676;
+    font-size: 15px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.OptionTextLeft {
+    left: 27px;
+    top: 2px;
+}
+
+.OptionTextRight {
+    left: 238px;
+    top: 2px;
+    text-align: right;
+}
+
+.Ellipse1 {
+    width: 20.02px;
+    height: 22px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: white;
+    border-radius: 9999px;
+    border: 1px #DBDBDB solid;
+}
+
+.Password {
+    width: 364px;
+    height: 80px;
+    left: 90px;
+    top: 159px;
+    position: absolute;
+}
+
+.Frame1 {
+    width: 364px;
+    height: 56px;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: white;
+    border-bottom: 1px #767676 solid;
+}
+
+.Frame2 {
+    width: 364px;
+    height: 56px;
+    left: 90;
+    top: 83;
+    position: absolute;
+    background: white;
+    border-bottom: 1px #767676 solid;
+}
+
+.Frame1Text,
+.Frame2Text {
+    position: absolute;
+    color: #767676;
+    font-size: 16px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Frame1Text {
+    left: 0;
+    top: 19px;
+}
+
+.Frame2Text {
+    left: 0;
+    top: 19px;
+}
+
+.ErrorMessage {
+    position: absolute;
+    color: #ED1C24;
+    font-size: 15px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+    left: 0;
+    top: 62px;
+}
+
+.PageTitle {
+    left: 475px;
+    top: 113px;
+    position: absolute;
+    color: black;
+    font-size: 28px;
+    font-family: 'Pretendard';
+    font-weight: 500;
+    word-wrap: break-word;
+}

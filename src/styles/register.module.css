@@ -1,0 +1,102 @@
+.Register {
+    width: 1024px;
+    height: 1024px;
+    position: relative;
+    background: white;
+}
+
+.PcLogin {
+    width: 543px;
+    height: 684px;
+    left: 240px;
+    top: 186px;
+    position: absolute;
+    border: 1px black solid;
+}
+
+.LoginBtn {
+    width: 364px;
+    height: 56px;
+    left: 90px;
+    top: 388px;
+    position: absolute;
+    background: #BFFF00;
+    border: none;
+    
+    cursor: pointer;
+}
+
+/* 커서 올리면 색 변경 */
+.LoginBtn:hover {
+    background: #a9e001;
+}
+
+.LoginBtn div {
+    left: 154px;
+    top: 19px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Frame {
+    width: 364px;
+    height: 56px;
+    position: absolute;
+    background: white;
+    border-bottom: 1px #767676 solid;
+}
+
+.FrameText {
+    left: 0;
+    top: 19px;
+    position: absolute;
+    font-size: 16px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 600;
+    word-wrap: break-word;
+    border: none;
+    outline: none;
+}
+
+.Frame1 {
+    left: 90px;
+    top: 83px;
+}
+
+.Frame2 {
+    left: 90px;
+    top: 159px;
+}
+
+.Frame3 {
+    left: 90px;
+    top: 235px;
+}
+
+.RegisterText {
+    left: 463px;
+    top: 119px;
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 28px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.ErrorMessage {
+    left: 90px;
+    top: 318px;
+    position: absolute;
+    color: #FE0000;
+    font-size: 16px;
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 400;
+    word-wrap: break-word;
+}
