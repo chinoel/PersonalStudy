@@ -3,33 +3,24 @@ import { jwtVerify } from 'jose';
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
 
-const publicPaths = ['/'];
-const loggedInPaths = ['/dashboard'];
+
+// 루트 경로
+const rootPaths = ['/'];
 const adminPaths = ['/admin'];
 
 export async function middleware(req: NextRequest) {
 
+    // 로그인 사용자 분류
     const { pathname } = req.nextUrl;
+    const token = req.cookies.get('auth_token')?.value;
 
-    // 전체 경로
-    if (publicPaths.includes(pathname)) {
+    // 루트 경로
+    if (rootPaths.includes(pathname)) {
         return NextResponse.next();
     }
 
-    // 로그인 사용자 경로
-    if (loggedInPaths.includes(pathname)) {
-        const token = req.cookies.get('auth_token')?.value;
-
-        if (!token) {
-            return NextResponse.redirect(new URL('/login', req.url));
-        }
-
-        try {
-            await jwtVerify(token, secret);
-            return NextResponse.next();
-        } catch (err) {
-            return NextResponse.redirect(new URL('/login', req.url));
-        }
+    if (!token) {
+        return NextResponse.redirect(new URL('/login', req.url));
     }
 
     // 관리자 경로
