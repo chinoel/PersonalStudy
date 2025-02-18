@@ -1,11 +1,19 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import { SignJWT } from "jose";
 import { db } from "@/lib/db";
 
+const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
+
+async function generateToken(username: string, loginStay: boolean) {
+    return new SignJWT({ username })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime(loginStay ? "7d" : "1h")
+    .sign(secret);
+}
+
 export async function POST(req: Request) {
-    const { username, password } = await req.json();
-    const secret = process.env.JWT_SECRET || "err_secret";
+    const { username, password, loginStay } = await req.json();
 
     // 인증 로직
     interface User {
@@ -25,10 +33,15 @@ export async function POST(req: Request) {
         return NextResponse.json({ message: "비밀번호가 일치하지 않습니다."}, {status : 401});
     }
 
-    const token = jwt.sign({ username }, secret , { expiresIn: '1h' });
+    const token = await generateToken(username, loginStay);
 
     const response = NextResponse.json({message: '로그인 성공' });
-    response.cookies.set('auth_token', token, { httpOnly: true, path: '/' });
+    response.headers.set(
+        "Set-Cookie",
+        `auth_token=${token}; HttpOnly; Path=/; ${
+          process.env.NODE_ENV === "production" ? "Secure; SameSite=None" : "SameSite=Lax"
+        }`
+    )
 
     return response;
 }
