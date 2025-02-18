@@ -1,0 +1,134 @@
+.Quiz {
+    width: 1024px;
+    height: 1204px;
+    position: relative;
+    background: white;
+    font-family: 'Pretendard', sans-serif;
+}
+
+.title {
+    left: 395.71px;
+    top: 68.23px;
+    position: absolute;
+    text-align: center;
+    font-size: 22;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.Frame17 {
+    width: 1024px;
+    height: 659px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.Frame17>div {
+    position: absolute;
+    text-align: center;
+    color: black;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.Frame11,
+.Frame15 {
+    width: 825px;
+    height: 178px;
+    left: 124.71px;
+    position: absolute;
+    border-radius: 34px;
+    overflow: hidden;
+}
+
+.Frame11 {
+    top: 121.23px;
+    background: #DBF370;
+}
+
+.Frame15 {
+    top: 426.23px;
+    background: #F3E870;
+}
+
+.Frame11 img {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.Frame11 div,
+.Frame15 div {
+    width: 797px;
+    left: 14px;
+    top: 16px;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.Frame12 div,
+.Frame13 div,
+.Frame14 div {
+    font-family: 'Pretendard';
+    font-size: 24;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-weight: 700;
+    word-wrap: break-word;
+}
+
+.Frame12,
+.Frame13,
+.Frame14 {
+    width: 256px;
+    height: 63px;
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.Frame12 {
+    top: 331.23px;
+    left: 693.71px;
+    background: #C9FC8A;
+}
+
+.Frame13 {
+    top: 331.23px;
+    left: 409.71px;
+    background: #FCD48A;
+}
+
+.Frame14 {
+    top: 331.23px;
+    left: 124.71px;
+    background: #FCAC8A;
+}
+
+.Frame16 {
+    width: 112px;
+    height: 66px;
+    position: absolute;
+    top: 94.31px;
+    left: 75px;
+    background: #CEE46A;
+    border-radius: 22px;
+    transform: rotate(-20deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.JlptLV {
+    color: #D74F4F;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
