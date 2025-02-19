@@ -5,7 +5,7 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
 
 
 // 루트 경로
-const rootPaths = ['/'];
+const rootPaths = ['/', '/test'];
 const adminPaths = ['/admin'];
 
 export async function middleware(req: NextRequest) {
@@ -20,7 +20,7 @@ export async function middleware(req: NextRequest) {
     }
 
     if (!token) {
-        return NextResponse.redirect(new URL('/login', req.url));
+        return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
     }
 
     // 관리자 경로
@@ -28,7 +28,7 @@ export async function middleware(req: NextRequest) {
         const token = req.cookies.get('auth_token')?.value;
 
         if (!token) {
-            return NextResponse.redirect(new URL('/login', req.url));
+            return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
         }
 
         try {
@@ -36,12 +36,12 @@ export async function middleware(req: NextRequest) {
 
             // 관리자 확인
             if (decode.payload.isAdmin !== true) {
-                return NextResponse.redirect(new URL('/unauthorized', req.url));
+                return NextResponse.redirect(new URL('auth/unauthorized', req.url));
             }
 
             return NextResponse.next();
         } catch (err) {
-            return NextResponse.redirect(new URL('/login', req.url));
+            return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
         }
     }
 }

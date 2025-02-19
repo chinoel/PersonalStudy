@@ -36,7 +36,7 @@ export default function LoginPage() {
         if (res.ok) {
             setTimeout(() => {
                 window.location.href = "/";
-            }, 1500);
+            }, 100);
         }
     }
 

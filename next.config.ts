@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
         permanent: true
       }
     ]
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/auth/login/:path*',
+        destination: '/auth/login',
+      }
+    ]
   }
 };
 
