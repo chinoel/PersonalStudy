@@ -5,7 +5,7 @@ const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
 
 
 // 루트 경로
-const rootPaths = ['/', '/test'];
+const rootPaths = ['/'];
 const adminPaths = ['/admin'];
 
 export async function middleware(req: NextRequest) {
