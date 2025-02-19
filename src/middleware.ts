@@ -20,7 +20,10 @@ export async function middleware(req: NextRequest) {
     }
 
     if (!token) {
-        return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
+        const redirectUrl = new URL('/auth/login', req.url);
+        redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
+
+        return NextResponse.redirect(redirectUrl);
     }
 
     // 관리자 경로
@@ -28,7 +31,10 @@ export async function middleware(req: NextRequest) {
         const token = req.cookies.get('auth_token')?.value;
 
         if (!token) {
-            return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
+            const redirectUrl = new URL('/auth/login', req.url);
+            redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
+
+            return NextResponse.redirect(redirectUrl);
         }
 
         try {
@@ -41,7 +47,10 @@ export async function middleware(req: NextRequest) {
 
             return NextResponse.next();
         } catch (err) {
-            return NextResponse.redirect(new URL('auth/login/prevURL=' + pathname, req.url));
+            const redirectUrl = new URL('/auth/login', req.url);
+            redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
+
+            return NextResponse.redirect(redirectUrl);
         }
     }
 }

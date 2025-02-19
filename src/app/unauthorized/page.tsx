@@ -1,6 +1,7 @@
 // pages/unauthorized.tsx
-import styles from '@/styles/404.module.css'; // 404 스타일 그대로 사용
+import styles from '@/styles/404.module.css';
 
+// Admin Page 401 Error
 function CustomUnauthorized() {
     return (
         <div className={styles.container}>
