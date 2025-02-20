@@ -3,9 +3,12 @@ import bcrypt from "bcryptjs";
 import { SignJWT } from "jose";
 import { db } from "@/lib/db";
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
+const secret = new TextEncoder().encode(process.env.JWT_SECRET);
 
 async function generateToken(username: string, loginStay: boolean, isAdmin: boolean) {
+    if (!secret) {
+        throw new Error("JWT_SECRET is not defined");
+    }
     return new SignJWT({ username, isAdmin })
     .setProtectedHeader({ alg: 'HS256' })
     .setExpirationTime(loginStay ? "7d" : "1h")
