@@ -7,3 +7,7 @@ export async function GET() {
   const users = await prisma.users.findMany();
   return NextResponse.json(users);
 }
+
+export async function DELETE(req: Request) {
+  
+}

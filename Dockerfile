@@ -44,12 +44,10 @@ FROM node:20.10.0-alpine AS runner
 WORKDIR /usr/src/app
 
 # 빌드 결과물 복사
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/node_modules ./node_modules
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./ 
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
-
-# Next.js는 이미 package.json에 포함되어 있어 추가로 글로벌로 설치할 필요 없음
-# RUN yarn global add next
 
 # 3000 포트 열기
 EXPOSE 3000
