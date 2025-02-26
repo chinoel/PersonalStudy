@@ -35,4 +35,11 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          ssh user@your-server 'docker pull chinoel/personalstudy:latest && docker stop personalstudy || true && docker rm personalstudy || true && docker run -d --name personalstudy -e JWT_SECRET=$JWT_SECRET -e DATABASE_URL=$DATABASE_URL -p 3000:3000 chinoel/personalstudy:latest'
+          docker pull chinoel/personalstudy:latest
+          docker stop personalstudy || true
+          docker rm personalstudy || true
+          docker run -d --name personalstudy \
+          -e JWT_SECRET=$JWT_SECRET \
+          -e DATABASE_URL=$DATABASE_URL \
+          -p 3000:3000 \
+          chinoel/personalstudy:latest
