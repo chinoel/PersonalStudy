@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { db } from "@/lib/db";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
     try {
@@ -12,7 +14,12 @@ export async function POST(req: Request) {
         }
 
         // 중복 체크
-        const userExist = db.prepare("SELECT * FROM users WHERE username = ?").get(username);
+        const userExist = await prisma.users.findUnique({
+            where: {
+                user_id: username
+            }
+        });
+        
         if (userExist) {
             return NextResponse.json({ message: "이미 존재하는 아이디입니다." }, { status: 400 });
         }
@@ -20,13 +27,15 @@ export async function POST(req: Request) {
         // 비밀번호 해싱
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        db.prepare("INSERT INTO users (" +
-            "username, password, display_name" +
-            ") VALUES (?, ?, ?)").run(
-                username,
-                hashedPassword,
-                display_name
-            );
+        // 회원가입
+        await prisma.users.create({
+            data: {
+                user_id: username,
+                hashed_password: hashedPassword,
+                user_name: display_name
+                 
+            }
+        });
 
         return NextResponse.json({ message: "회원가입 성공" }, { status: 201 });
 

@@ -9,12 +9,23 @@ datasource db {
 
 model users {
   uid               Int       @id @default(autoincrement())
-  user_id           String    @unique(map: "user_id") @db.VarChar(255)
-  user_password     String    @db.VarChar(255)
-  user_name         String    @db.VarChar(255)
+  uuid              String    @unique(map: "uuid") @default(dbgenerated("(uuid())")) @db.Char(36)
+  user_id           String    @unique(map: "user_id") @db.VarChar(50)
+  hashed_password   String    @db.VarChar(255)
+  user_name         String    @db.VarChar(100)
   created_at        DateTime? @default(now()) @db.Timestamp(0)
   updated_at        DateTime? @default(now()) @db.Timestamp(0)
   login_attempts    Int?      @default(0)
   account_locked_at DateTime? @db.Timestamp(0)
+  locked_until      DateTime? @db.Timestamp(0)
   last_login        DateTime? @db.Timestamp(0)
+  admins            admins[]
+}
+
+model admins {
+  id      Int   @id @default(autoincrement())
+  user_id Int
+  users   users @relation(fields: [user_id], references: [uid], onDelete: Cascade, onUpdate: NoAction, map: "admins_ibfk_1")
+
+  @@index([user_id], map: "user_id")
 }

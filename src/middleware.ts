@@ -12,7 +12,7 @@ export async function middleware(req: NextRequest) {
 
     // 로그인 사용자 분류
     const { pathname } = req.nextUrl;
-    const token = req.cookies.get('auth_token')?.value;
+    const token = req.cookies.get('access_token')?.value;
 
     // 루트 경로
     if (rootPaths.includes(pathname)) {
@@ -28,7 +28,7 @@ export async function middleware(req: NextRequest) {
 
     // 관리자 경로
     if (adminPaths.includes(pathname)) {
-        const token = req.cookies.get('auth_token')?.value;
+        const token = req.cookies.get('access_token')?.value;
 
         if (!token) {
             const redirectUrl = new URL('/auth/login', req.url);
