@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: [self-hosted, Linux]
+    runs-on: [self-hosted, ]
 
     steps:
       - name: Checkout code
@@ -24,15 +24,15 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t chinoel/personalStudy:latest .
+          docker build -t chinoel/personalstudy:latest .
 
       - name: Push Docker Image
         run: |
-          docker push chinoel/personalStudy:latest
+          docker push chinoel/personalstudy:latest
 
       - name: Deploy to Server (via SSH)
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          ssh user@your-server 'docker pull chinoel/personalStudy:latest && docker stop personalstudy || true && docker rm personalstudy || true && docker run -d --name personalstudy -e JWT_SECRET=$JWT_SECRET -e DATABASE_URL=$DATABASE_URL -p 3000:3000 chinoel/personalStudy:latest'
+          ssh user@your-server 'docker pull chinoel/personalstudy:latest && docker stop personalstudy || true && docker rm personalstudy || true && docker run -d --name personalstudy -e JWT_SECRET=$JWT_SECRET -e DATABASE_URL=$DATABASE_URL -p 3000:3000 chinoel/personalstudy:latest'
