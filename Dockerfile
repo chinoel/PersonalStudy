@@ -10,7 +10,6 @@ FROM node:20.10.0-alpine AS builder
 
 ARG JWT_SECRET
 ARG DATABASE_URL
-ARG ENV_MODE=production
 
 WORKDIR /usr/src/app
 
@@ -19,8 +18,6 @@ COPY . .
 
 ENV JWT_SECRET=$JWT_SECRET
 ENV DATABASE_URL=$DATABASE_URL
-
-RUN cp .env.$ENV_MODE .env.production
 
 RUN yarn build
 
