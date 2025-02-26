@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
 
-RUN yarn --frozen-lockfile
+RUN yarn install
 
 # 2
 FROM node:20.10.0-alpine AS builder
