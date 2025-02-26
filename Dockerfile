@@ -34,9 +34,6 @@ ENV DATABASE_URL=$DATABASE_URL
 # Prisma generate 실행
 RUN npx prisma generate
 
-# 프로젝트 빌드
-RUN yarn build
-
 # 3. Run stage
 FROM node:20.10.0-alpine AS runner
 
