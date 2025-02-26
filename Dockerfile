@@ -1,4 +1,6 @@
 FROM node:20.10.0-alpine AS deps
+
+RUN apk add --no-cache libc6-compat
 WORKDIR /usr/src/app
 
 COPY package.json yarn.lock ./
@@ -30,6 +32,8 @@ WORKDIR /usr/src/app
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
+
+RUN yarn global add next
 
 EXPOSE 3000
 
