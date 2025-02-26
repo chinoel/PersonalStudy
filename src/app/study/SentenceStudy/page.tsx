@@ -1,4 +1,5 @@
 import styles from '@/styles/sentenceStudy.module.css';
+import Image from 'next/image';
 
 export default function Page() {
     return (
@@ -7,7 +8,7 @@ export default function Page() {
                 <div className={styles.Frame17}>
                     <div className={styles.title}>아래 문장을 보고 읽거나 뜻을 말해보세요</div>
                     <div className={styles.Frame11}>
-                        <img className={styles.Voice} src="https://placehold.co/38x38" alt="Voice Icon" />
+                        <Image className={styles.Voice} src="https://placehold.co/38x38" alt="Voice Icon" />
                         <div className={styles.layerTextLong}>
                             一年は365日です。一年は365日です。一年は365日です。
                         </div>

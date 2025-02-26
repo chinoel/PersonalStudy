@@ -69,7 +69,7 @@ export async function PUT(req: Request) {
 
         return response;
         
-    } catch (err) {
+    } catch {
         return NextResponse.json({ message: "서버 오류" }, { status: 500 });
     }
 }

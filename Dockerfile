@@ -1,0 +1,37 @@
+FROM node:20.10.0-alpine AS deps
+WORKDIR /usr/src/app
+
+COPY package.json yarn.lock ./
+
+RUN yarn --frozen-lockfile
+
+# 2
+FROM node:20.10.0-alpine AS builder
+
+ARG JWT_SECRET
+ARG DATABASE_URL
+ARG ENV_MODE
+
+WORKDIR /usr/src/app
+
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+COPY . .
+
+RUN cp .env.$ENV_MODE .env.production
+
+RUN yarn build
+
+#3
+FROM node:20.10.0-alpine AS runner
+
+WORKDIR /usr/src/app
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
+
+ENV JWT_SECRET=$JWT_SECRET
+ENV DATABASE_URL=$DATABASE_URL
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]

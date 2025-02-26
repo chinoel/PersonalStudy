@@ -1,7 +1,8 @@
 "use client";
 
 import styles from "@/styles/login.module.css";
-import { use, useEffect, useState } from "react";
+import Image from "next/image";
+import { useState } from "react";
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
@@ -91,9 +92,9 @@ export default function LoginPage() {
 
                 {/* 현재는 구현하지 않음 */}
                 <div className={styles.Sns}>SNS로 간편하게 시작하기</div>
-                <img className={styles.Ellipse2} src="/logo/naver.png" />
-                <img className={styles.Ellipse3} src="/logo/kakao.png" />
-                <img className={styles.Ellipse4} src="/logo/google.png" />
+                <Image className={styles.Ellipse2} src="/logo/naver.png" alt={""} />
+                <Image className={styles.Ellipse3} src="/logo/kakao.png" alt={""} />
+                <Image className={styles.Ellipse4} src="/logo/google.png" alt={""} />
 
                 <button onClick={register} className={styles.LoginBtn}>
                     <div className={styles.LoginBtnText}>회원가입</div>

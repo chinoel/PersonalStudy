@@ -46,7 +46,7 @@ export async function middleware(req: NextRequest) {
             }
 
             return NextResponse.next();
-        } catch (err) {
+        } catch {
             const redirectUrl = new URL('/auth/login', req.url);
             redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
 
