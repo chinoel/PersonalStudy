@@ -19,6 +19,8 @@ COPY . .
 ENV JWT_SECRET=$JWT_SECRET
 ENV DATABASE_URL=$DATABASE_URL
 
+RUN npx prisma generate
+
 RUN yarn build
 
 #3
