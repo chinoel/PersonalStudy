@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nextjs-app
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      JWT_SECRET: "your_jwt_secret"
+      DATABASE_URL: "mysql://user:password@selfStudy:3306/dbname"
+    networks:
+      - study-net
+
+networks:
+  study-net:
+    external: true
