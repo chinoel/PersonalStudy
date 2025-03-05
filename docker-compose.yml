@@ -13,21 +13,6 @@ services:
     networks:
       - study-net
 
-  mysql:
-    image: mysql:8.0
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
-      MYSQL_DATABASE: "${MYSQL_DATABASE}"
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - study-net
-
 networks:
   study-net:
     external: true
-
-volumes:
-  mysql-data:
