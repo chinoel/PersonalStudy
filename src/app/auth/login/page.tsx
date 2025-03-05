@@ -92,9 +92,9 @@ export default function LoginPage() {
 
                 {/* 현재는 구현하지 않음 */}
                 <div className={styles.Sns}>SNS로 간편하게 시작하기</div>
-                <Image className={styles.Ellipse2} src="/logo/naver.png" alt={""} />
-                <Image className={styles.Ellipse3} src="/logo/kakao.png" alt={""} />
-                <Image className={styles.Ellipse4} src="/logo/google.png" alt={""} />
+                <Image className={styles.Ellipse2} src="/logo/naver.png" alt={""} width={48} height={48} />
+                <Image className={styles.Ellipse3} src="/logo/kakao.png" alt={""} width={48} height={48} />
+                <Image className={styles.Ellipse4} src="/logo/google.png" alt={""} width={48} height={48} />
 
                 <button onClick={register} className={styles.LoginBtn}>
                     <div className={styles.LoginBtnText}>회원가입</div>

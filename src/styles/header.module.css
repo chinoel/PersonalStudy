@@ -1,0 +1,135 @@
+.HeaderGuest {
+    width: 1024px;
+    height: 72px;
+    position: relative;
+    background: white;
+  }
+  
+  .Group4 {
+    width: 156px;
+    height: 33px;
+    position: absolute;
+    left: 35px;
+    top: 20px;
+    cursor: pointer;
+  }
+
+  
+  .Ellipse5 {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 126px;
+    top: 1px;
+    background: #E87979;
+    border-radius: 9999px;
+  }
+  
+  .PsJapan {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: #111111;
+    font-size: 30px;
+    font-family: 'Bazzi';
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .Frame19 {
+    width: 64px;
+    height: 40px;
+    position: absolute;
+    left: 825px;
+    top: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(153, 153, 153, 0.6);
+    cursor: pointer;
+  }
+
+  .Frame19:hover {
+    border: 1px solid #111111;
+  }
+  
+  .Frame19Text {
+    position: absolute;
+    left: 16px;
+    top: 13px;
+    text-align: center;
+    color: #999999;
+    font-size: 12px;
+    font-family: 'Pretendard';
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .Frame20 {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    left: 909px;
+    top: 16px;
+    background: #111111;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+    .Frame20:hover {
+        background: #444444;
+    }
+  
+  .Frame20Text {
+    position: absolute;
+    left: 19px;
+    top: 13px;
+    text-align: center;
+    color: #FEFEFE;
+    font-size: 12px;
+    font-family: 'Pretendard';
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .Group1, .Group2, .Group3 {
+    position: absolute;
+    top: 27px;
+  }
+  
+  .Group1 {
+    width: 75px;
+    left: 231px;
+  }
+  
+  .Group2 {
+    width: 66px;
+    left: 346px;
+  }
+  
+  .Group3 {
+    width: 96px;
+    left: 452px;
+  }
+  
+  .MenuText {
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    word-wrap: break-word;
+  }
+  
+  .Vector {
+    position: absolute;
+    top: 0;
+  }
+  .Vector1 { left: 62px; }
+  .Vector2 { left: 53px; }
+  .Vector3 { left: 83px; }
+  
