@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "@/styles/login.module.css";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -20,24 +21,20 @@ export default function LoginPage() {
         window.location.href = "/register";
     }
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: { preventDefault: () => void;}) => {
         e.preventDefault();
 
-        const res = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-        });
+        const result = await signIn("user", {
+            redirect: false,
+            username: formData.username,
+            password: formData.password
+        })
 
-        const data = await res.json();
-        setMessage(data.message);
-
-        if (res.ok) {
-            setTimeout(() => {
-                window.location.href = "/";
-            }, 100);
+        if (result?.error) {
+            setMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+        else {
+            window.location.href = "/";
         }
     }
 
@@ -92,9 +89,9 @@ export default function LoginPage() {
 
                 {/* 현재는 구현하지 않음 */}
                 <div className={styles.Sns}>SNS로 간편하게 시작하기</div>
-                <Image className={styles.Ellipse2} src="/logo/naver.png" alt={""} />
-                <Image className={styles.Ellipse3} src="/logo/kakao.png" alt={""} />
-                <Image className={styles.Ellipse4} src="/logo/google.png" alt={""} />
+                <Image className={styles.Ellipse2} src="/logo/naver.png" alt={""} width={32} height={32} />
+                <Image className={styles.Ellipse3} src="/logo/kakao.png" alt={""} width={32} height={32} />
+                <Image className={styles.Ellipse4} src="/logo/google.png" alt={""} width={32} height={32} />
 
                 <button onClick={register} className={styles.LoginBtn}>
                     <div className={styles.LoginBtnText}>회원가입</div>

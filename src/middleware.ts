@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
+import { getToken } from 'next-auth/jwt';
 
-const secret = new TextEncoder().encode(process.env.JWT_SECRET || "err_secret");
-
+const secret = process.env.NEXTAUTH_SECRET || "err_secret";
 
 // 루트 경로
 const rootPaths = ['/'];
@@ -12,12 +12,13 @@ export async function middleware(req: NextRequest) {
 
     // 로그인 사용자 분류
     const { pathname } = req.nextUrl;
-    const token = req.cookies.get('access_token')?.value;
 
     // 루트 경로
     if (rootPaths.includes(pathname)) {
         return NextResponse.next();
     }
+
+    const token = await getToken({ req, secret });
 
     if (!token) {
         const redirectUrl = new URL('/auth/login', req.url);
@@ -26,33 +27,7 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(redirectUrl);
     }
 
-    // 관리자 경로
-    if (adminPaths.includes(pathname)) {
-        const token = req.cookies.get('access_token')?.value;
-
-        if (!token) {
-            const redirectUrl = new URL('/auth/login', req.url);
-            redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
-
-            return NextResponse.redirect(redirectUrl);
-        }
-
-        try {
-            const decode = await jwtVerify(token, secret);
-
-            // 관리자 확인
-            if (decode.payload.isAdmin !== true) {
-                return NextResponse.redirect(new URL('auth/unauthorized', req.url));
-            }
-
-            return NextResponse.next();
-        } catch {
-            const redirectUrl = new URL('/auth/login', req.url);
-            redirectUrl.searchParams.set('prevURL', encodeURIComponent(pathname));
-
-            return NextResponse.redirect(redirectUrl);
-        }
-    }
+    return NextResponse.next();
 }
 
 export const config = {
