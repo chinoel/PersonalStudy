@@ -23,9 +23,9 @@ model users {
 }
 
 model admins {
-  id      Int   @id @default(autoincrement())
-  user_id Int
-  users   users @relation(fields: [user_id], references: [uid], onDelete: Cascade, onUpdate: NoAction, map: "admins_ibfk_1")
+  id      Int    @id @default(autoincrement())
+  user_id Int?
+  users   users? @relation(fields: [user_id], references: [uid], onDelete: Cascade, onUpdate: NoAction, map: "admins_ibfk_1")
 
   @@index([user_id], map: "user_id")
 }

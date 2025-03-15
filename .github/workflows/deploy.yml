@@ -36,9 +36,12 @@ jobs:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           docker pull chinoel/personalstudy:latest
+
           docker stop personalstudy || true
           docker rm personalstudy || true
+          
           docker run -d --name personalstudy \
+          --network study-net \
           -e JWT_SECRET=$JWT_SECRET \
           -e DATABASE_URL=$DATABASE_URL \
           -p 3000:3000 \
