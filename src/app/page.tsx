@@ -2,8 +2,14 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState } from "react";
+
 export default function Home() {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession({
+    required: false,
+    onUnauthenticated() {
+      window.location.href = "/auth/login";
+    },
+  });
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

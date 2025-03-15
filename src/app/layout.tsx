@@ -1,20 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SessionProviderWrapper from "@/app/components/SessionProviderWrapper";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Header from "@/app/components/header/page";
+import Footer from "@/app/components/footer/page";
 
 export const metadata: Metadata = {
-  title: "Word Study Only Me",
+  title: "오늘은 일본어",
   description: "Word Study Only Me",
 };
 
@@ -23,12 +14,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SessionProviderWrapper>
-          {children}
-        </SessionProviderWrapper>
+      <body>
+          <SessionProviderWrapper>
+            <Header />
+            {children}
+            <Footer />
+          </SessionProviderWrapper>
       </body>
     </html>
   );
