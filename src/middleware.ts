@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
     // 로그인 사용자 분류
     const { pathname } = req.nextUrl;
 
-    // 루트 경로
+    // 루트 경로 허용
     if (rootPaths.includes(pathname)) {
         return NextResponse.next();
     }

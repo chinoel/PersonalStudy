@@ -7,6 +7,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model admins {
+  id      Int    @id @default(autoincrement())
+  user_id Int?
+  users   users? @relation(fields: [user_id], references: [uid], onDelete: Cascade, onUpdate: NoAction, map: "admins_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
 model users {
   uid               Int       @id @default(autoincrement())
   uuid              String    @unique(map: "uuid") @default(dbgenerated("(uuid())")) @db.Char(36)
@@ -22,10 +30,12 @@ model users {
   admins            admins[]
 }
 
-model admins {
-  id      Int    @id @default(autoincrement())
-  user_id Int?
-  users   users? @relation(fields: [user_id], references: [uid], onDelete: Cascade, onUpdate: NoAction, map: "admins_ibfk_1")
-
-  @@index([user_id], map: "user_id")
+model words {
+  id         BigInt    @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  kanji      String?   @unique(map: "kanji") @db.VarChar(255)
+  kana       String    @db.VarChar(255)
+  meaning    String    @db.Text
+  audio_url  String?   @db.Text
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  level      Int?
 }

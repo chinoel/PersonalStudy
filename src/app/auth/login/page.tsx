@@ -34,7 +34,9 @@ export default function LoginPage() {
             setMessage("아이디 또는 비밀번호가 일치하지 않습니다.");
         }
         else {
-            window.location.href = "/";
+            const prevURL = new URLSearchParams(window.location.search).get("prevURL");
+            const redirectURL = prevURL ? decodeURIComponent(prevURL) : "/";
+            window.location.href = redirectURL;
         }
     }
 
