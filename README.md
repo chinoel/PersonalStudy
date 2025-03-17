@@ -24,6 +24,7 @@
 - npx tsx src/lib/initDb.ts
 
 ## Help Code
+npx prisma init --datasource-provider mysql
 1️⃣ .env 파일 설정
 2️⃣ schema.prisma에서 MySQL 지정
 3️⃣ npx prisma db pull 실행 (DB에서 테이블 불러오기)

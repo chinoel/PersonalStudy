@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { jwtVerify } from 'jose';
 import { getToken } from 'next-auth/jwt';
 
 const secret = process.env.NEXTAUTH_SECRET || "err_secret";
 
 // 루트 경로
 const rootPaths = ['/'];
-const adminPaths = ['/admin'];
+//const adminPaths = ['/admin'];
 
 export async function middleware(req: NextRequest) {
 

@@ -1,4 +1,4 @@
-import { Profile, Session } from "next-auth";
+import { Session } from "next-auth";
 import NextAuth, { DefaultSession } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import KakaoProvider, { KakaoProfile } from "next-auth/providers/kakao";
@@ -19,7 +19,7 @@ const handler = NextAuth({
                 username: { label: "Username", type: "text" },
                 password: { label: "Password", type: "password" },
             },
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 const res = await fetch(`${process.env.NEXTAUTH_URL}/api/auth/signin`, {
                     method: 'POST',
                     headers: {
@@ -58,7 +58,7 @@ const handler = NextAuth({
         updateAge: 12 * 60 * 60,
     },
     callbacks: {
-        async signIn({ user, account, profile }) {
+        async signIn({ profile }) {
             if (profile) {
                 console.log((profile as KakaoProfile).id);
             }

@@ -16,6 +16,7 @@ export async function POST(request: Request) {
     })
 
     if (user && (await bcrypt.compare(body.hashed_password, user.hashed_password))) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { hashed_password, ...userWithoutPass } = user;
         return new Response(JSON.stringify(userWithoutPass));
     }
