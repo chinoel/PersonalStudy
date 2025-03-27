@@ -12,9 +12,11 @@ declare module "next-auth" {
         error ?: "RefreshAccessTokenError"
     }
 
-    interface User {
-        id ?: string
-        name ?: string
+    interface UserData {
+        id?: string | null
+        name?: string | null
+        email?: string | null
+        image?: string | null
     }
 }
 

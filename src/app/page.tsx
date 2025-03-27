@@ -62,8 +62,8 @@ export default function Home() {
         <div>로그인 된 사용자
 
           <div>사용자 정보</div>
-          <div>id: {session.user.email}</div>
-          <div>name: {session.user.name}</div>
+          <div>id: {session?.UserData?.id}</div>
+          <div>name: {session?.UserData?.name}</div>
           <button color="primary" onClick={() => signOut()}>
             로그아웃
           </button>
